@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { TransactionsContext } from "../context/TransactionsContext";
-import { api } from "../services/api";
 import { ITransactionAdd } from "./interfaces";
+import { api } from "../services/api";
 
 export function useTransactions() {
   const { transactions, setTransactions } = useContext(TransactionsContext);
