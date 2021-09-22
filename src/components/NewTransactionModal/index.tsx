@@ -14,9 +14,8 @@ export function NewTransactionModal({
   const [type, setType] = useState<string>("deposit");
   const [title, setTitle] = useState<string>("");
   const [category, setCategory] = useState<string>("");
-  const [value, setValue] = useState<Number>(0);
+  const [value, setValue] = useState<number>(0);
   const { fetchCreateNewTransaction } = useTransactions();
-
   async function handleCreateNewTransaction(e: FormEvent) {
     e.preventDefault();
     const newDate = new Date().toString();
@@ -65,7 +64,7 @@ export function NewTransactionModal({
         <input
           type="number"
           placeholder="Valor"
-          value={Number(value)}
+          value={value}
           onChange={({ target }) => setValue(Number(target.value))}
         />
         <TransactionTypeContainer>
@@ -99,7 +98,12 @@ export function NewTransactionModal({
           value={category}
           onChange={({ target }) => setCategory(target.value)}
         />
-        <button type="submit">Cadastrar</button>
+        <button
+          disabled={[!title, !value, !type, !category].includes(true)}
+          type="submit"
+        >
+          Cadastrar
+        </button>
       </Container>
     </Modal>
   );
